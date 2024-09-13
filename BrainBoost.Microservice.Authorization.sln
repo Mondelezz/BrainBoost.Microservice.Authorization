@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainBoost.Microservice.Authorization", "BrainBoost.Microservice.Authorization\BrainBoost.Microservice.Authorization.csproj", "{247B3D27-9CCC-413F-AC39-7748DC3C4B5F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keycloak.Auth.Api", "BrainBoost.Microservice.Authorization\Keycloak.Auth.Api.csproj", "{247B3D27-9CCC-413F-AC39-7748DC3C4B5F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{210D9B8D-60D2-4566-946F-64C46355BA04}"
 EndProject
