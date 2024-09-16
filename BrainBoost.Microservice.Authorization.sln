@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keycloak.Auth.Api", "BrainB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{210D9B8D-60D2-4566-946F-64C46355BA04}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9BECA41C-E1FA-42C6-A1D3-BB7E45483C13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{247B3D27-9CCC-413F-AC39-7748DC3C4B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{247B3D27-9CCC-413F-AC39-7748DC3C4B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{247B3D27-9CCC-413F-AC39-7748DC3C4B5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BECA41C-E1FA-42C6-A1D3-BB7E45483C13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BECA41C-E1FA-42C6-A1D3-BB7E45483C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BECA41C-E1FA-42C6-A1D3-BB7E45483C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BECA41C-E1FA-42C6-A1D3-BB7E45483C13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

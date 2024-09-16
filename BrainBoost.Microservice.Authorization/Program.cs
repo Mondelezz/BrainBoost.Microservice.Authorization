@@ -1,5 +1,8 @@
+using Keycloak.Auth.Api.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Serilog;
-
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateBootstrapLogger();
@@ -13,7 +16,20 @@ try
 
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
+    builder.Services.AddSwaggerGenWithAuth(builder.Configuration);
+
+    builder.Services.AddAuthorization();
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(o =>
+        {
+            o.RequireHttpsMetadata = false;
+            o.Audience = builder.Configuration["Authentication:Audience"];
+            o.MetadataAddress = builder.Configuration["Authentication:MetadataAddress"]!;
+            o.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidIssuer = builder.Configuration["Authentication:ValidIssuer"]
+            };  
+        });
 
     var app = builder.Build();
 
@@ -24,6 +40,13 @@ try
     }
 
     app.UseHttpsRedirection();
+
+    app.MapGet("users/me", (ClaimsPrincipal claimsPrincipal) =>
+    {
+        return claimsPrincipal.Claims.ToDictionary(c => c.Type, c => c.Value);
+    }).RequireAuthorization();
+
+    app.UseAuthentication();
 
     app.UseAuthorization();
 
