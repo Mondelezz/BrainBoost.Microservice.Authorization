@@ -10,7 +10,8 @@ internal static class ServiceCollectionExtensions
         {
             o.CustomSchemaIds(id => id.FullName!.Replace('+', '-'));
 
-            o.AddSecurityDefinition("Keycloak", new OpenApiSecurityScheme
+            o.AddSecurityDefinition("Keycloak",
+            new OpenApiSecurityScheme
             {
                 Type = SecuritySchemeType.OAuth2,
                 Flows = new OpenApiOAuthFlows
@@ -23,7 +24,7 @@ internal static class ServiceCollectionExtensions
                             { "openid", "openid" },
                             { "profile", "profile" },
                         }
-                    }
+                    } 
                 }
             });
             var securityRequirement = new OpenApiSecurityRequirement

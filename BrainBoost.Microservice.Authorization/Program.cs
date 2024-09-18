@@ -13,11 +13,10 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
-
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGenWithAuth(builder.Configuration);
-
+    
     builder.Services.AddAuthorization();
     builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(o =>
@@ -31,6 +30,9 @@ try
             };  
         });
 
+    builder.Services.AddJaeger();
+    builder.Services.AddPrometheus();
+
     var app = builder.Build();
 
     if (app.Environment.IsDevelopment())
@@ -38,6 +40,10 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+
+    app.UseOpenTelemetryPrometheusScrapingEndpoint();
+
+    app.MapPrometheusScrapingEndpoint();
 
     app.UseHttpsRedirection();
 
